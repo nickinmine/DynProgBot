@@ -1,5 +1,4 @@
 def investment(f):
-    print(1)
     c = len(f) - 1
     #print('Условие задачи')
     #print('f[1]', 'f[2]', 'f[3]', sep='\t')

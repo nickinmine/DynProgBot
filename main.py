@@ -71,25 +71,23 @@ def inputMessage(message):
         try:
             data = message.text.strip()
             data = data.split("\n")
-            for i in range(len(data) - 1):
+            for i in range(len(data)):
                 data[i] = data[i].split(' ')
                 for k in range(len(data[i])):
-                    data[i][k] = int(data[i][k])
+                    data[i][k] = float(data[i][k])
             print(data)
             answer = investment.investment(data)
             output = ""
-            for k in range(1, len(answer)):
-                for i in range(1, len(answer[k])):
+            for k in range(0, len(answer)):
+                for i in range(0, len(answer[k])):
                     ans = str(answer[k][i])
                     ans = "⠀" * (2 - len(ans)) + ans
                     output += ans + "⠀"
                 output += "\n"
-                if k == len(answer) - 2:
-                    output += "Ответ:⠀"
             bot.send_message(message.chat.id, output)
             investmentFlag = False
-        except:
-            bot.send_message(message.chat.id, "Ты ебобо?")
+        except BaseException as e:
+            bot.send_message(message.chat.id, str(e))
         return
 
 
